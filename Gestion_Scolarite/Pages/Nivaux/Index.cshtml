@@ -1,0 +1,54 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Nivaux.IndexModel
+
+@{
+    ViewData["Title"] = "Nivaux";
+}
+
+<h2>@Model.Filiere.Code: @Model.Filiere.Designation</h2>
+<h3>Nivaux</h3>
+
+<p>
+    <a asp-page="Create" asp-route-idFiliere="@Model.IdFil">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Niveau[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Niveau[0].Designation)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Niveau) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                <a asp-page="/Etudiants/Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@item.ID">Etudiants</a>
+            </td>
+            <td>
+                <a asp-page="/Modules/Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@item.ID">Modules</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-idFiliere="@Model.IdFil" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-idFiliere="@Model.IdFil" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-idFiliere="@Model.IdFil" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-page="/Filieres/Index">Back to Filieres</a>
+</p>

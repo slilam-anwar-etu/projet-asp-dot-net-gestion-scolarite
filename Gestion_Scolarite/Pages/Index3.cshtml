@@ -1,0 +1,11 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Index3Model
+@{
+    ViewData["Title"] = "Etudiant";
+    Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+}
+
+<h1>Etudiant</h1>
+<h2>@Model.Etudiant.Nom @Model.Etudiant.Prenom</h2>
+<h2>@Model.Niveau.Code: @Model.Niveau.Designation</h2>
+

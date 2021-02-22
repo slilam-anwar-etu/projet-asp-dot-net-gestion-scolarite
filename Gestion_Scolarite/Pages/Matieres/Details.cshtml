@@ -1,0 +1,49 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Matieres.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Matiere</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Matiere.Code)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Matiere.Code)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Matiere.Designation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Matiere.Designation)
+        </dd>
+        <dt class="col-sm-2">
+            Volume Horaire
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Matiere.VolumeHoraire) (heures)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Matiere.Enseignant)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Matiere.Enseignant.Nom) @Html.DisplayFor(model => model.Matiere.Enseignant.Prenom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Matiere.Module)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Matiere.Module.Code): @Html.DisplayFor(model => model.Matiere.Module.Designation)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod" asp-route-id="@Model.Matiere.ID">Edit</a> |
+    <a asp-page="./Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod">Back to List</a>
+</div>

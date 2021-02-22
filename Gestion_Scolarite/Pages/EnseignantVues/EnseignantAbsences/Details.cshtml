@@ -1,0 +1,55 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantAbsences.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Absence</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Absence.Seance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Absence.Seance.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Absence.Etudiant)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Absence.Etudiant.Nom) @Html.DisplayFor(model => model.Absence.Etudiant.Prenom)
+        </dd>
+        <dt class="col-sm-2">
+            Absence Justifié ?
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Absence.Absence_Justifie)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Absence.justification)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Absence.justification)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Absence.Fichier)
+        </dt>
+        <dd>
+                @if (@Model.Absence.Fichier != null)
+                {
+                    <form asp-page-handler="Download" method="post" asp-route-id="@Model.Absence.ID">
+                        <input type="submit" class="page-link" value="Download">
+                    </form>
+                }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-idMatiere="@Model.IdMat" asp-route-idSeance="@Model.IdSe" asp-route-id="@Model.Absence.ID">Edit</a> |
+    <a asp-page="./Index" asp-route-idMatiere="@Model.IdMat" asp-route-idSeance="@Model.IdSe">Back to List</a>
+</div>

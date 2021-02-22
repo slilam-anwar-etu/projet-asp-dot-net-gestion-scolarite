@@ -1,0 +1,50 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Seances.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Seance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Seance.ID" />
+            <div class="form-group">
+                <label asp-for="Seance.Date_Seance" class="control-label"></label>
+                <input asp-for="Seance.Date_Seance" class="form-control" />
+                <span asp-validation-for="Seance.Date_Seance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.Type" class="control-label"></label>
+                <select asp-for="Seance.Type" class="form-control" asp-items="ViewBag.Type"></select>
+                <span asp-validation-for="Seance.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.Heures" class="control-label"></label>
+                <input asp-for="Seance.Heures" class="form-control" />
+                <span asp-validation-for="Seance.Heures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.Minutes" class="control-label"></label>
+                <input asp-for="Seance.Minutes" class="form-control" />
+                <span asp-validation-for="Seance.Minutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod" asp-route-idMatiere="@Model.IdMat">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,48 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantSeancesModel
+
+@{
+    ViewData["Title"] = "Seances";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h2>@Model.Matiere.Code: @Model.Matiere.Designation</h2>
+<h3>Séances</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Durée
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Seance) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_Seance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heures) h :  @Html.DisplayFor(modelItem => item.Minutes) min
+            </td>
+            <td>
+                <a asp-page="./EnseignantAbsences/Index" asp-route-idMatiere="@Model.IdMat" asp-route-idSeance="@item.ID">Absences</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-page="./EnseignantMatieres">Back to Matières</a>
+</div>

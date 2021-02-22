@@ -1,0 +1,34 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantAbsences.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Absence</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Absence.Etudiant" class="control-label"></label>
+                <select asp-for="Absence.EtudiantID" class ="form-control" asp-items="ViewBag.EtudiantID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" asp-route-idMatiere="@Model.IdMat" asp-route-idSeance="@Model.IdSe">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

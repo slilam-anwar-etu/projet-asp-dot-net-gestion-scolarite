@@ -1,0 +1,61 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Enseignants.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Enseignant</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Nom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Prenom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Prenom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Adresse)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Adresse)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Telephone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Telephone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enseignant.Departement)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enseignant.Departement.Code)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-idDepartement="@Model.IdDept" asp-route-id="@Model.Enseignant.ID">Edit</a> |
+    <a asp-page="Index" asp-route-idDepartement="@Model.IdDept">Back to List</a>
+</div>

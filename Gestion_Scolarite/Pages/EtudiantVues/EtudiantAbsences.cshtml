@@ -1,0 +1,61 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EtudiantVues.EtudiantAbsencesModel
+
+@{
+    ViewData["Title"] = "Absences";
+    Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+}
+
+<h2>Absences</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Module
+            </th>
+            <th>
+                Matière
+            </th>
+            <th>
+                Séance
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Absence[0].justification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Absence[0].Fichier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Absence) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.Matiere.Module.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.Matiere.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.Date_Seance) (@Html.DisplayFor(modelItem => item.Seance.Type))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.justification)
+            </td>
+            <td>
+                @if (item.Fichier != null)
+                {
+                    <form asp-page-handler="Download" method="post" asp-route-id="@item.ID">
+                        <input type="submit" class="page-link" value="Download">
+                    </form>
+                }
+            </td>
+            <td>
+                <a asp-page="./AbsenceJustification" asp-route-idEtudiant="@item.EtudiantID" asp-route-idSeance="@item.SeanceID" asp-route-id="@item.ID">Justifier</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

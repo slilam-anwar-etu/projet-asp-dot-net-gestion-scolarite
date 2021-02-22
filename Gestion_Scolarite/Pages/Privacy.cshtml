@@ -1,0 +1,16 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+    if(Model.Userr.RoleID == 3)
+    {
+        Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+    }
+    else if (Model.Userr.RoleID == 2)
+    {
+        Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+    }
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>

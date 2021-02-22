@@ -1,0 +1,52 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Filieres.IndexModel
+
+@{
+    ViewData["Title"] = "Filieres";
+}
+
+<h2>Filieres</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere[0].Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere[0].Responsable)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Filiere) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responsable.Nom) @Html.DisplayFor(modelItem => item.Responsable.Prenom)
+            </td>
+            <td>
+                <a asp-page="/Nivaux/Index" asp-route-idFiliere="@item.ID">Nivaux</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

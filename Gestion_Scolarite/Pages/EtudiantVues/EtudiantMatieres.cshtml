@@ -1,0 +1,54 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EtudiantVues.EtudiantMatieresModel
+
+@{
+    ViewData["Title"] = "Matieres";
+    Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+}
+
+<h2>@Model.Module.Code: @Model.Module.Designation | Matières</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Matiere[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matiere[0].Designation)
+            </th>
+            <th>
+                Volume Horaire
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matiere[0].Enseignant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Matiere) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumeHoraire) (heures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enseignant.Nom) @Html.DisplayFor(modelItem => item.Enseignant.Prenom)
+            </td>
+            <td>
+                <a asp-page="./EtudiantSeances" asp-route-idModule="@Model.IdMod" asp-route-idMatiere="@item.ID">Séances</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="/EtudiantVues/EtudiantModules">Back to Modules</a>
+</div>

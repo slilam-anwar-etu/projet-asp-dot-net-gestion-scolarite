@@ -1,0 +1,43 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EtudiantVues.AbsenceJustificationModel
+
+@{
+    ViewData["Title"] = "AbsenceJustification";
+    Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+}
+
+<h1>AbsenceJustification</h1>
+
+<h4>Absence</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Absence.ID" />
+            <input type="hidden" asp-for="Absence.EtudiantID" />
+            <input type="hidden" asp-for="Absence.SeanceID" />
+            <input type="hidden" asp-for="Absence.Absence_Justifie" />
+            <div class="form-group">
+                <label asp-for="Absence.justification" class="control-label"></label>
+                <input asp-for="Absence.justification" class="form-control" />
+                <span asp-validation-for="Absence.justification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.file" class="control-label">Fichier (pdf)</label>
+                <input asp-for="@Model.file" class="form-control" accept=".pdf" type="file" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./EtudiantAbsences">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

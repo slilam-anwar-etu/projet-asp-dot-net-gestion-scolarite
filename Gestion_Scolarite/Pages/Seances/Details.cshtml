@@ -1,0 +1,43 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Seances.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Seance</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Date_Seance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Date_Seance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Type)
+        </dd>
+        <dt class="col-sm-2">
+            Durée
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Heures) h :  @Html.DisplayFor(model => model.Seance.Minutes) min
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Matiere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Matiere.Code): @Html.DisplayFor(model => model.Seance.Matiere.Designation)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod" asp-route-idMatiere="@Model.IdMat" asp-route-id="@Model.Seance.ID">Edit</a> |
+    <a asp-page="./Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod" asp-route-idMatiere="@Model.IdMat">Back to List</a>
+</div>

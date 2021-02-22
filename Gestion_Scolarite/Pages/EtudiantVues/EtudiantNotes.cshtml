@@ -1,0 +1,42 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EtudiantVues.EtudiantNotesModel
+
+@{
+    ViewData["Title"] = "Notes";
+    Layout = "~/Pages/Shared/_LayoutEtudiant.cshtml";
+}
+
+<h1>Notes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Module
+            </th>
+            <th>
+                Matière
+            </th>
+            <th>
+                Note
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Note) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Module.Code) <br />
+                @Html.DisplayFor(modelItem => item.Matiere.Module.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Code) <br />
+                @Html.DisplayFor(modelItem => item.Matiere.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note_Finale)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

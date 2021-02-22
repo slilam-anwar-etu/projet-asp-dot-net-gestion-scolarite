@@ -1,0 +1,60 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnSeancesModel
+
+@{
+    ViewData["Title"] = "Seances";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h1>Séances</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Niveau
+            </th>
+            <th>
+                Module
+            </th>
+            <th>
+                Matière
+            </th>
+            <th>
+                Durée
+            </th>
+            <th>
+                Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Seance) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_Seance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Module.Niveau.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Module.Code) <br />
+                @Html.DisplayFor(modelItem => item.Matiere.Module.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Code) <br />
+                @Html.DisplayFor(modelItem => item.Matiere.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heures) h : @Html.DisplayFor(modelItem => item.Minutes) min
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

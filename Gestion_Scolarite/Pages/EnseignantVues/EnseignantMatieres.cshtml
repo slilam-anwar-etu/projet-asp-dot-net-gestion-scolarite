@@ -1,0 +1,56 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantMatieresModel
+
+@{
+    ViewData["Title"] = "Matieres";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h1>Matières</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Niveau
+            </th>
+            <th>
+                Module
+            </th>
+            <th>
+                Matière
+            </th>
+            <th>
+                Volume Horaire
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Matiere) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.Niveau.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.Code) <br />
+                @Html.DisplayFor(modelItem => item.Module.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code) <br />
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumeHoraire) (heures)
+            </td>
+            <td>
+                <a asp-page="./EnseignantSeances" asp-route-idMatiere="@item.ID">Seances</a>
+            </td>
+            <td>
+                <a asp-page="./EnseignantNotes/Index" asp-route-idMatiere="@item.ID">Notes</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

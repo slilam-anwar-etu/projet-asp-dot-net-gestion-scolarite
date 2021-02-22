@@ -1,0 +1,50 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantNotes.IndexModel
+
+@{
+    ViewData["Title"] = "Notes";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h2>@Model.Matiere.Code: @Model.Matiere.Designation </h2>
+<h3>Notes</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].Etudiant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].Note_Initiale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].Note_Finale)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Note) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.Nom) @Html.DisplayFor(modelItem => item.Etudiant.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note_Initiale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note_Finale)
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-idMatiere="@Model.IdMat" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-idMatiere="@Model.IdMat" asp-route-id="@item.ID">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-page="/EnseignantVues/EnseignantMatieres" >Back to Matieres</a>
+</div>

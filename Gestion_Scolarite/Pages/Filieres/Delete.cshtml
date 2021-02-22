@@ -1,0 +1,40 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Filieres.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Filiere</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filiere.Code)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filiere.Code)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filiere.Designation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filiere.Designation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filiere.Responsable)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filiere.Responsable.Nom) @Html.DisplayFor(model => model.Filiere.Responsable.Prenom)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Filiere.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

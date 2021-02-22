@@ -1,0 +1,44 @@
+﻿@page
+@model Gestion_Scolarite.Pages.EnseignantVues.EnseignantNotes.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_LayoutEnseignant.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Note</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note.Matiere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note.Matiere.Code): @Html.DisplayFor(model => model.Note.Matiere.Designation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note.Etudiant)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note.Etudiant.Nom) @Html.DisplayFor(model => model.Note.Etudiant.Prenom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note.Note_Initiale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note.Note_Initiale)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note.Note_Finale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note.Note_Finale)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-idMatiere="@Model.IdMat" asp-route-id="@Model.Note.ID">Edit</a> |
+    <a asp-page="./Index" asp-route-idMatiere="@Model.IdMat">Back to List</a>
+</div>

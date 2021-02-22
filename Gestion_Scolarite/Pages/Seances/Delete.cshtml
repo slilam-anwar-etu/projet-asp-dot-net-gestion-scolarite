@@ -1,0 +1,46 @@
+﻿@page
+@model Gestion_Scolarite.Pages.Seances.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Seance</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Date_Seance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Date_Seance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Type)
+        </dd>
+        <dt class="col-sm-2">
+            Durée
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Heures) h :  @Html.DisplayFor(model => model.Seance.Minutes) min
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seance.Matiere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seance.Matiere.Code): @Html.DisplayFor(model => model.Seance.Matiere.Designation)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Seance.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index" asp-route-idFiliere="@Model.IdFil" asp-route-idNiveau="@Model.IdNiv" asp-route-idModule="@Model.IdMod" asp-route-idMatiere="@Model.IdMat">Back to List</a>
+    </form>
+</div>
