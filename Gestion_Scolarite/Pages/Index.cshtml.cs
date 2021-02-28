@@ -51,8 +51,7 @@ namespace Gestion_Scolarite.Pages
                 return Page();
             }
 
-            User = _context.Users
-                .Include(r => r.Role).ToList();
+            User = _context.Users.Include(r => r.Role).ToList();
             bool b = false;
             foreach (User user in User)
             {

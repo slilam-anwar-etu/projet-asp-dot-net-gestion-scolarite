@@ -22,6 +22,9 @@ namespace Gestion_Scolarite.Pages.Enseignants
         [BindProperty]
         public int IdDept { get; set; }
 
+        [BindProperty]
+        public Enseignant Enseignant { get; set; }
+
         public IActionResult OnGet(int? idDepartement)
         {
             if(idDepartement != null)
@@ -29,13 +32,9 @@ namespace Gestion_Scolarite.Pages.Enseignants
                 IdDept = (int)idDepartement;
             }
         
-        ViewData["RoleID"] = new SelectList(_context.Roles, "ID", "Designation");
-        ViewData["DepartementID"] = new SelectList(_context.Departements, "ID", "Designation");
             return Page();
         }
 
-        [BindProperty]
-        public Enseignant Enseignant { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync(int? idDepartement)

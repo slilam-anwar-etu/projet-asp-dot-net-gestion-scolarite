@@ -37,9 +37,7 @@ namespace Gestion_Scolarite.Pages.EnseignantVues.EnseignantAbsences
                 Absence2 = _context.Absences
                     .Include(a => a.Etudiant)
                     .Where(a => a.SeanceID == idSeance)
-                    .ToList();
-
-                
+                    .ToList();     
             }
             if (idMatiere != null)
             {
@@ -59,7 +57,6 @@ namespace Gestion_Scolarite.Pages.EnseignantVues.EnseignantAbsences
                 .Where(e => e.NiveauID == Niv.ID)
                 .ToList();
             }
-
 
             List<Etudiant> etudiants2 = new List<Etudiant>();
             foreach (var etudiant in Etudiant2)

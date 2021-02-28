@@ -24,10 +24,21 @@ namespace Gestion_Scolarite.Data
                 new Role{Designation="Enseignant"},
                 new Role{Designation="Etudiant"}
             };
-
             context.Roles.AddRange(roles);
-            context.SaveChanges();
 
+            var users = new User[]
+            {
+                new User{Nom="LAAZIZ", Prenom="Yassin", Email="laaziz@gmail.com", Adresse="nejma tanger", Password="laaziz", Telephone="0606060606", RoleID= 1}
+            };
+            context.Users.AddRange(users);
+
+            var admins = new Admin[]
+            {
+                new Admin{ID=1}
+            };
+            context.Admins.AddRange(admins);
+
+            context.SaveChanges();
         }
     }
 }
